@@ -11,4 +11,12 @@ router.get("/", async function(req, res, next) {
   }
 });
 
+router.post("/", async function(req,res,next){
+  try {
+    res.json(await project.create(req.body))
+  } catch (error) {
+    console.error("error while creating project", error.massage)
+    next(error)
+  }
+})
 module.exports = router;
